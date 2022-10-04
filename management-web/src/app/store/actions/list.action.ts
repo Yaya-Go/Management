@@ -22,11 +22,11 @@ export const listFailure = createAction(
 );
 
 export const listItemByTrans = createAction(
-  LIST,
+  LIST_ITEM_BY_TRANS,
   (transId: string) => ({ transId })
 );
 
 export const listItemBySeller = createAction(
-  LIST,
+  LIST_ITEM_BY_SELLER,
   (sellerId: string) => ({ sellerId })
 );
