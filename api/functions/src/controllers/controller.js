@@ -218,7 +218,7 @@ const SummaryController = async (req, res) => {
       if (c.exists) {
         const i = c.data();
         i.id = c.id;
-        result.cateList.push(c);
+        result.cateList.push(i);
       }
     });
 
