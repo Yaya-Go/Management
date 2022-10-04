@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   api: 'https://us-east1-yygo-management.cloudfunctions.net/api',
-  firebaseConfig: {
+  firebase: {
     apiKey: 'AIzaSyAghmXkdvYxD0zuwWe6skbuBrIbpnZd43Q',
     authDomain: 'yygo-management.firebaseapp.com',
     projectId: 'yygo-management',

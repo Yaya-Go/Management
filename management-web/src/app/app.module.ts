@@ -17,6 +17,10 @@ import { effects, reducers } from './store/app.state';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiPrefixInterceptor } from './core/intercepts/api-prefix.interceptor';
 import { ErrorInterceptor } from './core/intercepts/error.interceptor';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import { ErrorInterceptor } from './core/intercepts/error.interceptor';
     MatSidenavModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot(effects)
+    EffectsModule.forRoot(effects),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiPrefixInterceptor, multi: true },
