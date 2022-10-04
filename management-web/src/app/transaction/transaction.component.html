@@ -1,0 +1,12 @@
+<div class="transaction-container pt-5">
+  <div class="container">
+    <div class="d-flex">
+      <h1>Transaction List</h1>
+    </div>
+    
+    <app-table
+      [fields]="fields"
+      [list]="transList$ | async"
+    ></app-table>
+  </div>
+</div>

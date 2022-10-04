@@ -1,0 +1,22 @@
+<div class="table pt-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th *ngIf="showIndex">#</th>
+        <th *ngFor="let f of fields">{{ f | titlecase }}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of list; let i = index">
+        <td *ngIf="showIndex">{{ i+1 }}</td>
+        <td *ngFor="let f of fields">{{ l[f] }}</td>
+        <td>
+          <button mat-icon-button color="warn" (click)="delete(l)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

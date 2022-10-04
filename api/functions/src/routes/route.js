@@ -6,18 +6,22 @@ const AuthController = require('../controllers/auth.controller');
 const {
   AddController,
   ListController,
-  ListItemController,
+  ListItemBySellerController,
+  ListItemByTransController,
   RetrieveController,
   PutController,
   DeleteController,
-  ItemUpdateController
+  ItemUpdateController,
+  SummaryController
 } = require('../controllers/controller');
 
 Router.post('/login', AuthController.Login);
 Router.post('/register', AuthController.Register);
 Router.post('/add/:type', Auth, Add, AddController);
-Router.get('/list/:type', Auth, ListController);
-Router.get('/item/list/:sellerId', Auth, ListItemController);
+Router.get('/summary/:year', Auth, SummaryController);
+Router.get('/list/:type/:year', Auth, ListController);
+Router.get('/item/list/seller/:sellerId', Auth, ListItemBySellerController);
+Router.get('/item/list/transaction/:transId', Auth, ListItemByTransController);
 Router.get('/retrieve/:type/:id', Auth, RetrieveController);
 Router.put('/put/:type/:id', Auth, Put, PutController);
 Router.put('/item/update/:id', Auth, ItemUpdate, ItemUpdateController);

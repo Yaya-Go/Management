@@ -1,0 +1,12 @@
+<div class="sidenav">
+  <div class="container d-flex flex-column">
+    <h1>
+      <a routerLink="/" mat-raised-button>Menu</a>
+    </h1>
+    <ol>
+      <li *ngFor="let item of list">
+        <a class="w-100 my-3" [routerLink]="[item.path]" routerLinkActive="router-link-active" mat-raised-button color="accent">{{ item.name }}</a>
+      </li>
+    </ol>
+  </div>
+</div>

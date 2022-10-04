@@ -1,0 +1,14 @@
+<div class="login-form">
+  <h1 class="text-center mb-3">Login</h1>
+  <form [formGroup]="loginForm" class="d-flex flex-column" (submit)="login()">
+    <mat-form-field class="mx-auto" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field class="mx-auto" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="accent" class="login-button mx-auto">Login</button>
+  </form>
+</div>

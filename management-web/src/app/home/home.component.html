@@ -1,0 +1,28 @@
+<div class="home">
+  <div class="container">
+    <h1>Summary</h1>
+    <div class="row pt-4">
+      <div class="col-4">
+        <div class="summary">
+          <p class="d-flex">Accounts: <span class="ml-auto">{{ summary.accountSize | number }}</span></p>
+          <p class="d-flex">Sellers: <span class="ml-auto">{{ summary.sellerSize | number }}</span></p>
+          <p class="d-flex">Categories: <span class="ml-auto">{{ summary.cateSize | number }}</span></p>
+          <p class="d-flex">Transactions: <span class="ml-auto">{{ summary.transSize | number }}</span></p>
+          <p class="d-flex">Income: <span class="ml-auto">{{ summary.incomeSize | number }}</span></p>
+          <p class="d-flex">Transaction Total: <span class="ml-auto">{{ summary.transTotal | currency }}</span></p>
+          <p class="d-flex">Income Total: <span class="ml-auto">{{ summary.incomeTotal | currency }}</span></p>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 add-item" *ngFor="let item of addList">
+            <app-add-button
+              [type]="item.type"
+              [name]="item.name"
+            ></app-add-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

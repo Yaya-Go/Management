@@ -1,0 +1,9 @@
+<app-header></app-header>
+<div class="main row">
+  <div class="app-sidenav col-4" *ngIf="!isMobile && token">
+    <app-sidenav></app-sidenav>
+  </div>
+  <div class="main-content" [ngClass]="(!isMobile && token) ? 'col-8' : 'col-12'">
+    <router-outlet></router-outlet>
+  </div>
+</div>

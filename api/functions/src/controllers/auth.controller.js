@@ -42,7 +42,7 @@ const Auth = {
 
       delete user.password;
 
-      return res.json({ user });
+      return res.json(user);
     } catch (err) {
       console.log(err);
       return res.status(401).json({ error: 'errors.login.wrongcredential' });

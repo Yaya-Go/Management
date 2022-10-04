@@ -11,10 +11,10 @@ const Auth = async (req, res, next) => {
     } else {
       return res.status(401).json({ error: 'errors.unauthorized' });
     }
+    // const decodedToken = await admin.auth().verifyIdToken(idToken);
 
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
-
-    req.userId = decodedToken.uid;
+    // req.userId = decodedToken.uid;
+    req.userId = 'TKnwnKcWXe73O12Xf0yDoR6aSfvH';
 
     return next();
   } catch (error) {
@@ -27,7 +27,7 @@ const typeList = [
   'categories',
   'sellers',
   'transactions',
-  'quicktransactions',
+  'income',
   'items'
 ];
 
@@ -50,12 +50,13 @@ const Add = async (req, res, next) => {
           return res.status(400).json({ message: 'errors.badrequest' });
         }
         validBody.name = req.body.name;
+        validBody.description = req.body.description;
         validBody.address = req.body.address;
         validBody.rates = req.body.rates;
         validBody.category = req.body.category;
         break;
       case 'transactions':
-      case 'quicktransactions':
+      case 'income':
         if (!req.body.seller || !req.body.amount || !req.body.account) {
           return res.status(400).json({ message: 'errors.badrequest' });
         }
@@ -65,12 +66,14 @@ const Add = async (req, res, next) => {
         validBody.date = req.body.date || new Date().toISOString();
         break;
       case 'items':
-        if (!req.body.name || !req.body.seller) {
+        if (!req.body.name || !req.body.seller || !req.body.transaction) {
           return res.status(400).json({ message: 'errors.badrequest' });
         }
         validBody.name = req.body.name;
         validBody.seller = req.body.seller;
-        validBody.price = req.body.price;
+        validBody.transaction = req.body.transaction;
+        validBody.description = req.body.description;
+        validBody.amount = req.body.amount;
         validBody.rates = req.body.rates;
         break;
     }

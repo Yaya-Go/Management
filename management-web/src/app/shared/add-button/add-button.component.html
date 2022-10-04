@@ -1,0 +1,4 @@
+<button *ngIf="!isIcon" mat-raised-button class="w-100" color="primary" (click)="add()">{{ name }}</button>
+<button *ngIf="isIcon" mat-icon-button color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
