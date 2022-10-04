@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "yygo-management": {
+      "hosting": {
+        "management-web": [
+          "yygo-management"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "yygo-management"
+  }
+}

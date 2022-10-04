@@ -5,7 +5,7 @@ const AddController = async (req, res) => {
     const type = req.params.type;
 
     const newItem = { ...req.validBody };
-    console.log(newItem)
+    console.log(newItem);
     const data = await db.collection(type).add(newItem);
     newItem.id = data.id;
 
@@ -17,20 +17,20 @@ const AddController = async (req, res) => {
 
 const ListController = async (req, res) => {
   try {
-    const year = req.params.year;
+    let year = req.params.year;
     if (!year) {
       year = new Date().getFullYear();
     }
     const results = [];
 
     const doc = db.collection(req.params.type)
-      .where('userId', '==', req.userId);
+        .where('userId', '==', req.userId);
 
     let data;
     if (req.params.type === 'transactions' || req.params.type === 'income') {
       data = await doc.where('date', '>=', `${ year }-01-01`)
-        .where('date', '<=', `${ year }-12-31`)
-        .get();
+          .where('date', '<=', `${ year }-12-31`)
+          .get();
     } else {
       data = await doc.get();
     }
@@ -164,7 +164,7 @@ const ItemUpdateController = async (req, res) => {
 
 const SummaryController = async (req, res) => {
   try {
-    const year = req.params.year;
+    let year = req.params.year;
     if (!year) {
       year = new Date().getFullYear();
     }
@@ -174,13 +174,13 @@ const SummaryController = async (req, res) => {
     const sellerDoc = await db.collection('sellers').get();
     const cateDoc = await db.collection('categories').get();
     const transDoc = await db.collection('transactions')
-      .where('date', '>=', `${ year }-01-01`)
-      .where('date', '<=', `${ year }-12-31`)
-      .get();
+        .where('date', '>=', `${ year }-01-01`)
+        .where('date', '<=', `${ year }-12-31`)
+        .get();
     const incomeDoc = await db.collection('income')
-      .where('date', '>=', `${ year }-01-01`)
-      .where('date', '<=', `${ year }-12-31`)
-      .get();
+        .where('date', '>=', `${ year }-01-01`)
+        .where('date', '<=', `${ year }-12-31`)
+        .get();
 
     result.accountSize = accDoc.size;
     result.sellerSize = sellerDoc.size;
@@ -194,19 +194,19 @@ const SummaryController = async (req, res) => {
     result.cateList = [];
     result.accList = [];
 
-    transDoc.forEach(d => {
+    transDoc.forEach((d) => {
       if (d.exists) {
         result.transTotal += d.data().amount;
       }
     });
 
-    incomeDoc.forEach(d => {
+    incomeDoc.forEach((d) => {
       if (d.exists) {
         result.transTotal += d.data().amount;
       }
     });
 
-    accDoc.forEach(a => {
+    accDoc.forEach((a) => {
       if (a.exists) {
         const i = a.data();
         i.id = a.id;
@@ -214,19 +214,19 @@ const SummaryController = async (req, res) => {
       }
     });
 
-    cateDoc.forEach(c => {
+    cateDoc.forEach((c) => {
       if (c.exists) {
         const i = c.data();
         i.id = c.id;
         result.cateList.push(c);
       }
     });
-    
+
     return res.json(result);
   } catch (error) {
     return res.status(500).json({ error });
   }
-}
+};
 
 module.exports = {
   AddController,

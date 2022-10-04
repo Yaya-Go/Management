@@ -11,10 +11,9 @@ const Auth = async (req, res, next) => {
     } else {
       return res.status(401).json({ error: 'errors.unauthorized' });
     }
-    // const decodedToken = await admin.auth().verifyIdToken(idToken);
+    const decodedToken = await admin.auth().verifyIdToken(idToken);
 
-    // req.userId = decodedToken.uid;
-    req.userId = 'TKnwnKcWXe73O12Xf0yDoR6aSfvH';
+    req.userId = decodedToken.uid;
 
     return next();
   } catch (error) {

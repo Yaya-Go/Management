@@ -124,6 +124,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "management-web:build:production",
+            "firebaseProject": "yygo-management",
+            "firebaseHostingSite": "yygo-management"
+          }
         }
       }
     }
